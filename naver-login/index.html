@@ -32,15 +32,17 @@
             <input type="checkbox" id="login-check">
             <label for="login-check">로그인 상태 유지</label>
          </div>
-         <label>
+         <label class="login-ip-security">
             <span>IP보안</span>
             <input type="checkbox" role="switch" class="login-save">
          </label>
 
       </div>
-      <button>로그인</button>
-      <p>지문 · 얼굴 인증을 설정했다면</p>
-      <button>패스키 로그인</button>
+      <button class="login-button">로그인</button>
+      <div class="login-passkey-container">
+         <p class="login-passkey-text">지문 · 얼굴 인증을 설정했다면</p>
+      </div>
+      <button class="login-passkey">패스키 로그인</button>
    </div>
    <ul>
       <li tabindex="0">비밀번호 찾기</li>

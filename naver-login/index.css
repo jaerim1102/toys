@@ -176,6 +176,35 @@ label {
    border-color: #09aa5c;
 }
 
+.login-find li {
+   border-right: 1px solid #ccc;
+   padding-right: 0.5rem;
+   font-size: 0.8rem;
+}
+
+.login-find li:last-child {
+   border-right: none;
+}
+
 .footer-logo {
-   width: 10%;
+   width: 70px;
+}
+
+.footer-menu li {
+   font-size: 0.7rem;
+   padding: 0 0.5rem;
+   border-right: 1px solid #ccc;
+   color: gray;
+}
+
+.footer-menu li:last-child {
+   border-right: none;
+}
+
+footer span {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.5rem;
+   font-size: 0.7rem;
 }

@@ -6,19 +6,25 @@ body {
 select {
    position: absolute;
    top: 20px;
-   right: 0;
+   right: 10rem;
    padding: 0.5em;
    border: 1px solid #ccc;
 }
 
 .naver-logo {
-   width: 20%;
+
+   width: 200px;
    display: block;
    margin: 0 auto;
    margin-bottom: 2rem;
 }
 
-.login-menu {}
+.login-menu {
+   padding: 0;
+   display: table;
+   width: 100%;
+   margin-top: 0;
+}
 
 li {
    display: inline-block;
@@ -29,16 +35,42 @@ li:focus {
 }
 
 .menu-item {
-
    padding: 1rem 2rem;
-   background-color: #f5f6f4;
-   border-radius: 1rem;
+   background-color: #fff;
+
+   border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.login-container {
+   border: 1px solid #ccc;
+   border-radius: 0.5rem;
+   width: 420px;
+   margin: 0 auto;
 }
 
 .form-container {
-   margin: 0 18rem;
    display: flex;
    flex-direction: column;
+   align-items: center;
+}
+
+input[type="text"],
+input[type="password"] {
+   width: 350PX;
+   padding: 1rem;
+   border: 1px solid #ccc;
+   border-radius: 1rem;
+   resize: horizontal;
+   overflow: auto;
+}
+
+input[type="text"] {
+   border-radius: 1rem 1rem 0 0;
+   border-bottom: none;
+}
+
+input[type="password"] {
+   border-radius: 0 0 1rem 1rem;
 }
 
 button {
@@ -53,6 +85,13 @@ input[type="checkbox"] {
 
 label {
    cursor: pointer;
+}
+
+.login-keep {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 1rem 1.5rem;
 }
 
 .login-save {
@@ -86,4 +125,8 @@ label {
 .login-save:checked {
    background-color: #09aa5c;
    border-color: #09aa5c;
+}
+
+.footer-logo {
+   width: 10%;
 }

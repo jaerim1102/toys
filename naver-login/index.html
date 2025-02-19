@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>네이버 : 로그인</title>
+   <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+   <header>
+      <select>
+         <option value="ko">한국어</option>
+         <option value="en">English</option>
+         <option value="ch">中國語</option>
+      </select>
+      <a href="https://www.naver.com"><img src="/logo.png" alt="Naver" class="naver-logo"></a>
+   </header>
+   <div class="login-container">
+      <ul class="login-menu">
+         <li class="menu-item" tabindex="0">ID/전화번호</li>
+         <li class="menu-item" tabindex="0">일회용 번호</li>
+         <li class="menu-item" tabindex="0">QR코드</li>
+      </ul>
+      <div class="form-container">
+         <input type="text" placeholder="아이디">
+         <input type="password" placeholder="비밀번호">
+      </div>
+      <div class="login-keep">
+         <div class="login-check">
+            <input type="checkbox" id="login-check">
+            <label for="login-check">로그인 상태 유지</label>
+         </div>
+         <label>
+            <span>IP보안</span>
+            <input type="checkbox" role="switch" class="login-save">
+         </label>
+
+      </div>
+      <button>로그인</button>
+      <p>지문 · 얼굴 인증을 설정했다면</p>
+      <button>패스키 로그인</button>
+      <ul>
+         <li tabindex="0">비밀번호 찾기</li>
+         <li tabindex="0">아이디 찾기</li>
+         <li tabindex="0">회원가입</li>
+      </ul>
+   </div>
+   <footer>
+      <ul>
+         <li tabindex="0">이용약관</li>
+         <li tabindex="0">개인정보처리방침</li>
+         <li tabindex="0">책임의 한계와 법적고지</li>
+         <li tabindex="0">회원정보 고객센터</li>
+      </ul>
+      <span>
+         <a href="https://www.naver.com"><img src="/logo.png" alt="Naver"></a>
+         <p>Copyright © NAVER Corp. All Rights Reserved.</p>
+      </span>
+
+   </footer>
+</body>
+
+</html>

@@ -1,6 +1,24 @@
-img {
-   width: 30%;
+body {
+   text-align: center;
+   margin: 5rem;
 }
+
+select {
+   position: absolute;
+   top: 20px;
+   right: 0;
+   padding: 0.5em;
+   border: 1px solid #ccc;
+}
+
+.naver-logo {
+   width: 20%;
+   display: block;
+   margin: 0 auto;
+   margin-bottom: 2rem;
+}
+
+.login-menu {}
 
 li {
    display: inline-block;
@@ -10,6 +28,18 @@ li:focus {
    outline: 2px solid black;
 }
 
+.menu-item {
+
+   padding: 1rem 2rem;
+   background-color: #f5f6f4;
+   border-radius: 1rem;
+}
+
+.form-container {
+   margin: 0 18rem;
+   display: flex;
+   flex-direction: column;
+}
 
 button {
    background-color: #09aa5c;

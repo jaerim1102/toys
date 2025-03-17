@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		.wrap {
+			margin: 120vh 0;
+			position: relative;
+			height: 250vh;
+			background-color: wheat;
+		}
+
+		.dot {
+			position: absolute;
+			width: 10px;
+			height: 10px;
+			background-color: #636363;
+			top: 0;
+			left: 0;
+			overflow: hidden;
+			background: linear-gradient(#e66465, #9198e5);
+		}
+
+		.dot>span {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 100%;
+			display: block;
+			width: 100%;
+			background-color: wheat;
+		}
+
+		ol {
+			box-sizing: border-box;
+			height: 100%;
+		}
+
+		ol>li {
+			height: 20%;
+			border: 1px dashed red;
+		}
+
+		ol>li.active {
+			color: red;
+		}
+
+		@media (max-width: 768px) {
+			.wrap {
+				height: 520vh;
+			}
+		}
+
+		.clip-shape {
+			width: 200px;
+			height: 300px;
+			background-color: red;
+			clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 33%, 50% 0%, 100% 33%);
+			clip-path: path("M 0 0 H 200 V 300 H 0 Z M 0 0 A 100 100 0 0 1 200 0 Z");
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="clip-shape"></div>
+	<div class="wrap">
+		<div class="dot">
+			<span></span>
+		</div>
+
+		<ol class="list">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+	</div>
+	</div>
+
+	<script>
+		function debounce(func, wait) {
+			let timeout
+			return function () {
+				clearTimeout(timeout)
+				timeout = setTimeout(() => func.apply(this, arguments), wait)
+			}
+		}
+
+		function scrollEvent() {
+			//element
+			const wrap = document.querySelector('.wrap')
+			const dot = wrap.querySelector('.dot')
+			const bar = dot.querySelector('span')
+			const lists = wrap.querySelectorAll('ol > li')
+
+			//values
+			let wrapTop, wrapBottom, scrollY, viewport, triggerPoint
+			let previousStates = new Map() //리스트별 이전 상태 저장
+
+			const init = () => {
+				wrapTop = window.scrollY + wrap.getBoundingClientRect().top // 절대 높이 계산
+				wrapBottom = wrapTop + wrap.offsetHeight
+
+				dot.style.height = `${wrap.offsetHeight}px`
+				bar.style.height = `${wrap.offsetHeight}px`
+
+				updateScrollValues() // 스크롤 값 업데이트
+				scrollHandler() // 초기 상태 업데이트
+			}
+
+			const updateScrollValues = () => {
+				scrollY = window.scrollY
+				viewport = scrollY + window.innerHeight  // 현재 표시되는 화면
+				triggerPoint = scrollY + (window.innerHeight * 0.3) // 이벤트를 줄 viewport의 지점
+			}
+
+			const scrollHandler = () => {
+				updateScrollValues()
+
+				//progress
+				const progress = wrapBottom - triggerPoint //남은 스크롤 길이 = 요소의 하단 위치 - 이벤트를 줄 지점
+
+				if (wrapTop < triggerPoint && wrapBottom > scrollY) { // viewport 판별
+					bar.style.height = `${Math.max(0, progress)}px`
+				} else {
+					bar.style.height = wrapTop > scrollY ? `${wrap.offsetHeight}px` : `0px`
+				}
+
+				// wrap
+				lists.forEach((list, index) => {
+					const listTop = list.getBoundingClientRect().top + scrollY
+					const listBottom = listTop + window.innerHeight
+					const state = listTop < triggerPoint && listBottom > scrollY
+
+					// 상태가 변경된 경우만 실행 
+					if (previousStates.get(index) !== state) {
+						previousStates.set(index, state) // 상태 업데이트
+						list.classList.toggle('active', state)
+					}
+				})
+			}
+
+			const handleResize = debounce(() => { init() }, 200) //리사이즈 이벤트마다 과도한 실행 방지 
+
+			window.addEventListener("scroll", scrollHandler)
+			window.addEventListener("resize", handleResize)
+
+			init() //초기실행
+		}
+
+		window.addEventListener('load', () => {
+			scrollEvent()
+		})
+	</script>
+</body>
+
+</html>

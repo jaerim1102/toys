@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>버튼 누르면 텍스트 바뀌기</title>
+</head>
+<body>
+   <h1>안녕하세요</h1>
+   <button>Click!</button>
+</body>
+<script>
+      let changeText = document.querySelector('h1');
+      let changeBtn = document.querySelector('button');
+
+   function btnClickEvent () {
+      changeText.innerHTML = "반가워요!"
+}
+
+changeBtn.addEventListener('click', btnClickEvent);
+</script>
+</html>
